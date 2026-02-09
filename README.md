@@ -118,5 +118,5 @@ MIT
 
 ## Links
 
-- Documentation: https://observa.dev/docs
-- GitHub: https://github.com/ObservaSolutions/observa-sdk
+- Documentation: ...
+- GitHub: https://github.com/ObservaSolutions/sdk-observa

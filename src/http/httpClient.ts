@@ -255,7 +255,7 @@ export class HttpClient {
     }
 
     private async checkHealth(): Promise<void> {
-        const url = this.buildUrl('/api/health')
+        const url = this.buildUrl('/health')
         const controller = new AbortController()
         const timer = setTimeout(() => controller.abort(), this.timeoutMs)
 
