@@ -1,23 +1,48 @@
+/**
+ * Main SDK.
+ */
+export { ObservaSDK } from './sdk'
+/**
+ * SDK options.
+ */
+export type { ObservaSDKOptions } from './sdk'
+
+/**
+ * Base HTTP client.
+ */
+export { HttpClient } from './http/httpClient'
+/**
+ * HTTP types.
+ */
+export type { HttpClientOptions, RequestOptions, RetryPolicy, AuthMode } from './http/httpClient'
+
+/**
+ * Typed SDK errors.
+ */
 export {
-  init,
-  captureException,
-  captureMessage,
-  setUser,
-  setTag,
-  setExtra,
-  addBreadcrumb,
-  withScope,
-  pushScope,
-  popScope,
-  setPropagationContext,
-  flush,
-  runWithNewScope,
-} from './core/hub'
+  SdkError,
+  ValidationError,
+  AuthError,
+  ForbiddenError,
+  NotFoundError,
+  ConflictError,
+  RateLimitError,
+  ServerError,
+  NetworkError,
+  TimeoutError,
+} from './http/errors'
 
-export { ProcessIntegration } from './integrations/process'
-export { requestHandler, errorHandler } from './integrations/express'
-export { continueTraceFromHeaders, getTraceHeaders, startTransaction, startSpan } from './tracing/propagation'
+/**
+ * Domain APIs.
+ */
+export { UptimeApi } from './apis/uptimeApi'
+export { IngestApi } from './apis/ingestApi'
 
-export type { SDKOptions, Integration } from './types/options'
-export type { ObservaEvent } from './types/event'
-export type { Breadcrumb } from './types/breadcrumb'
+/**
+ * Uptime types.
+ */
+export type { UptimeEvent, UptimeStatus, UptimeHeartbeatInput, UptimeSummary } from './domain/uptime'
+/**
+ * Ingestion types.
+ */
+export type { IngestEvent, IngestLevel, IngestRequest, IngestResponse } from './domain/ingest'
