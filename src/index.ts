@@ -37,6 +37,7 @@ export {
  */
 export { UptimeApi } from './apis/uptimeApi'
 export { IngestApi } from './apis/ingestApi'
+export type { IngestNormalizationOptions } from './apis/ingestApi'
 
 /**
  * Uptime types.

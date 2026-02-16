@@ -1,4 +1,4 @@
-import { IngestApi } from './apis/ingestApi'
+import { IngestApi, type IngestNormalizationOptions } from './apis/ingestApi'
 import { UptimeApi } from './apis/uptimeApi'
 import { HttpClient, type RetryPolicy } from './http/httpClient'
 import {
@@ -38,6 +38,7 @@ export type ObservaSDKOptions = {
      * Additional headers sent with every request.
      */
     headers?: Record<string, string>
+    ingest?: IngestNormalizationOptions
 }
 
 /**
@@ -76,7 +77,7 @@ export class ObservaSDK {
             retry: options.retry,
             headers: options.headers,
         })
-        this.ingest = new IngestApi(this.http, options.dsnKey)
+        this.ingest = new IngestApi(this.http, options.dsnKey, options.ingest)
         this.uptime = new UptimeApi(this.http, options.dsnKey)
         this.http.startHealthCheck(() => this.ingest.health(options.dsnKey))
     }

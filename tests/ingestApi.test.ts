@@ -24,12 +24,6 @@ describe('IngestApi', () => {
             event: {
                 level: 'error',
                 message: 'boom',
-                schema_version: 1,
-                context: {
-                    system: { pid: 123, uptimeSeconds: 10 },
-                    runtime: { node: '20.0.0', platform: 'linux', arch: 'x64' },
-                    request: { requestId: 'req_1', userId: 'user_1' },
-                },
             },
             idempotencyKey: 'req_10',
             sdkVersion: '2.0.0',
@@ -41,9 +35,10 @@ describe('IngestApi', () => {
         const body = JSON.parse(options.body)
         expect(body.dsnKey).toBe('dsn_1')
         expect(body.event.schema_version).toBe(1)
-        expect(body.event.context.system.pid).toBe(123)
-        expect(body.event.context.runtime.arch).toBe('x64')
-        expect(body.event.context.request.requestId).toBe('req_1')
+        expect(body.event.event_id).toBeDefined()
+        expect(new Date(body.event.timestamp).toString()).not.toBe('Invalid Date')
+        expect(body.event.context.system.pid).toBe(process.pid)
+        expect(body.event.context.runtime.arch).toBe(process.arch)
     })
 
     test('valida tamaño de idempotencyKey', async () => {

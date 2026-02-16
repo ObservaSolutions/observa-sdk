@@ -3,13 +3,14 @@ import type { ProcessContextDynamic, ProcessContextStatic } from '../utils/proce
 /**
  * Severity levels for events.
  */
-export type IngestLevel = 'debug' | 'info' | 'warning' | 'warn' | 'error' | 'fatal'
+export type IngestLevel = 'debug' | 'info' | 'warn' | 'error' | 'fatal'
 
 export type StacktraceFrame = {
     filename?: string
     function?: string
     lineno?: number
     colno?: number
+    in_app?: boolean
 }
 
 export type Stacktrace = {
